@@ -18,7 +18,7 @@ class WeatherPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.network(
-                        'https://via.placeholder.com/50', // замените на нужное изображение
+                        'https://www.pinterest.com/pin/636907572314201323/',
                         width: 50,
                         height: 50,
                       ),
@@ -30,7 +30,7 @@ class WeatherPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.network(
-                        'https://via.placeholder.com/50', // замените на нужное изображение
+                        'https://www.pinterest.com/pin/636907572314201323/',
                         width: 50,
                         height: 50,
                       ),
@@ -42,7 +42,7 @@ class WeatherPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.network(
-                        'https://via.placeholder.com/50', // замените на нужное изображение
+                        'https://www.pinterest.com/pin/636907572314201323/',
                         width: 50,
                         height: 50,
                       ),
@@ -54,7 +54,7 @@ class WeatherPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.network(
-                        'https://via.placeholder.com/50', // замените на нужное изображение
+                        'https://www.pinterest.com/pin/636907572314201323/',
                         width: 50,
                         height: 50,
                       ),
@@ -66,7 +66,7 @@ class WeatherPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.network(
-                        'https://via.placeholder.com/50', // замените на нужное изображение
+                        'https://www.pinterest.com/pin/636907572314201323/',
                         width: 50,
                         height: 50,
                       ),
@@ -78,7 +78,7 @@ class WeatherPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.network(
-                        'https://via.placeholder.com/50', // замените на нужное изображение
+                        'https://www.pinterest.com/pin/636907572314201323/',
                         width: 50,
                         height: 50,
                       ),
@@ -90,7 +90,7 @@ class WeatherPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.network(
-                        'https://via.placeholder.com/50', // замените на нужное изображение
+                        'https://www.pinterest.com/pin/636907572314201323/',
                         width: 50,
                         height: 50,
                       ),
