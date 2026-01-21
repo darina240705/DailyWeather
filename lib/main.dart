@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
+import 'weather_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,11 +9,46 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Моё приложение',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      title: 'Переход между страницами',
+      home: MainPage(),
+    );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Главная страница'),
       ),
-      home: HomeScreen(), // главный экран с кнопкой навигации
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('Караганда'),
+            Text('Сегодня'),
+            Image.network(
+             'https://www.pinterest.com/pin/636907572314201323/',
+              width: 150,
+              height: 150,
+            ),
+            Text('Температура: -15
+                 Влажность: 71%
+                 Ветер: 8 км/ч'),
+            Text('Рекомендации по погоде'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WeatherPage()),
+                );
+              },
+              child: Text('Погода на неделю'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
