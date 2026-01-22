@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'weather_page.dart';
+import 'screens/weather_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,9 +33,9 @@ class MainPage extends StatelessWidget {
               width: 150,
               height: 150,
             ),
-            Text('Температура: -15
+            Text('''Температура: -15
                  Влажность: 71%
-                 Ветер: 8 км/ч'),
+                 Ветер: 8 км/ч'''),
             Text('Рекомендации по погоде'),
             ElevatedButton(
               onPressed: () {
