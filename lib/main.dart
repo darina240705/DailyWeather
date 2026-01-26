@@ -4,10 +4,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-void main() {
-  runApp(MyApp());
-}
-
 Future<Album> fetchAlbum() async {
   final response = await http.get(
     Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
@@ -19,20 +15,6 @@ Future<Album> fetchAlbum() async {
     throw Exception('Failed to load album');
   }
 }
-
-FutureBuilder<Album>(
-  future: futureAlbum,
-  builder: (context, snapshot) {
-    if (snapshot.hasData) {
-      return Text(snapshot.data!.title);
-    } else if (snapshot.hasError) {
-      return Text('${snapshot.error}');
-    }
-
-    return const CircularProgressIndicator();
-  },
-)
-
 
 class Album {
   final int userId;
@@ -53,6 +35,15 @@ class Album {
   }
 }
 
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> create() => _MyAppState();
+}
+
 class _MyAppState extends State<MyApp> {
   late Future<Album> futureAlbum;
 
@@ -61,6 +52,34 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     futureAlbum = fetchAlbum();
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Fetch Data Example',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Fetch Data Example')),
+        body: Center(
+          child: FutureBuilder<Album>(
+            future: futureAlbum,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(snapshot.data!.titel);
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
+
+              return const CircularProgressIndicator();
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
 }
 
 class MyApp extends StatelessWidget {
@@ -108,4 +127,3 @@ class MainPage extends StatelessWidget {
     );
   }
 }
-
