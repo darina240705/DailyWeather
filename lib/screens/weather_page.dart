@@ -16,10 +16,10 @@ class WeatherPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(
-                  'https://www.pinterest.com/pin/636907572314201323/',
-                  width: 100,
-                  height: 100,
+                Image.asset(
+                  'lib/pictures/sun.png',
+                  width: 80,
+                  height: 80,
                 ),
                 SizedBox(width: 10),
                 Text('Понедельник\n0 -11'),
@@ -30,10 +30,10 @@ class WeatherPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(
-                  'https://www.pinterest.com/pin/636907572314201323/',
-                  width: 50,
-                  height: 50,
+                Image.asset(
+                  'lib/pictures/snow.png',
+                  width: 80,
+                  height: 80,
                 ),
                 SizedBox(width: 10),
                 Text('-11 -19\nВторник'),
@@ -44,10 +44,10 @@ class WeatherPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(
-                  'https://www.pinterest.com/pin/636907572314201323/',
-                  width: 50,
-                  height: 50,
+                Image.asset(
+                  'lib/pictures/snow.png',
+                  width: 80,
+                  height: 80,
                 ),
                 SizedBox(width: 10),
                 Text('-18 -23\nСреда'),
@@ -58,10 +58,10 @@ class WeatherPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(
-                  'https://www.pinterest.com/pin/636907572314201323/',
-                  width: 50,
-                  height: 50,
+                Image.asset(
+                  'lib/pictures/cloudy.png',
+                  width: 80,
+                  height: 80,
                 ),
                 SizedBox(width: 10),
                 Text('-17 -25\nЧетверг'),
@@ -72,10 +72,10 @@ class WeatherPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(
-                  'https://www.pinterest.com/pin/636907572314201323/',
-                  width: 50,
-                  height: 50,
+                Image.asset(
+                  'lib/pictures/cloudy.png',
+                  width: 80,
+                  height: 80,
                 ),
                 SizedBox(width: 10),
                 Text('-23 -30\nПятница'),
@@ -86,10 +86,10 @@ class WeatherPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(
-                  'https://www.pinterest.com/pin/636907572314201323/',
-                  width: 50,
-                  height: 50,
+                Image.asset(
+                  'lib/pictures/cloudy.png',
+                  width: 80,
+                  height: 80,
                 ),
                 SizedBox(width: 10),
                 Text('-22 -30\nСуббота'),
@@ -100,10 +100,10 @@ class WeatherPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(
-                  'https://www.pinterest.com/pin/636907572314201323/',
-                  width: 50,
-                  height: 50,
+                Image.asset(
+                  'lib/pictures/cloud.png',
+                  width: 80,
+                  height: 80,
                 ),
                 SizedBox(width: 10),
                 Text('-20 -26\nВоскресенье'),

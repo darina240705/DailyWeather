@@ -9,7 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    shared_preferences: ^2.0.0
+  shared_preferences: ^2.0.0
+  http: ^1.6.0
 
 dev_dependencies:
   flutter_test:
@@ -18,4 +19,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - lib/pictures/sun.png
+    - lib/pictures/snow.png
+    - lib/pictures/cloudy.png
+    - lib/pictures/cloud.png
 
