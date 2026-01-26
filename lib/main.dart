@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/weather_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:async';
 
 void main() {
   runApp(MyApp());
@@ -28,7 +29,6 @@ FutureBuilder<Album>(
       return Text('${snapshot.error}');
     }
 
-    // By default, show a loading spinner.
     return const CircularProgressIndicator();
   },
 )
@@ -108,3 +108,4 @@ class MainPage extends StatelessWidget {
     );
   }
 }
+
