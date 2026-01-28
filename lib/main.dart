@@ -2,116 +2,73 @@ import 'package:flutter/material.dart';
 import 'screens/weather_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'dart:async';
 
-Future<Album> fetchAlbum() async {
-  final response = await http.get(
-    Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
-  );
+// Функция для получения погоды из Open-Meteo
+Future<Map<String, dynamic>> fetchWeather() async {
+  final response = await http.get(Uri.parse(
+      'https://api.open-meteo.com/v1/forecast?latitude=47.7992&longitude=67.1475&current_weather=true'));
 
   if (response.statusCode == 200) {
-    return Album.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+    return jsonDecode(response.body);
   } else {
-    throw Exception('Failed to load album');
+    throw Exception('Ошибка загрузки погоды');
   }
 }
 
-class Album {
-  final int userId;
-  final int id;
-  final String title;
-
-  const Album({required this.userId, required this.id, required this.title});
-
-  factory Album.fromJson(Map<String, dynamic> json) {
-    return switch (json) {
-      {'userId': int userId, 'id': int id, 'title': String title} => Album(
-        userId: userId,
-        id: id,
-        title: title,
-      ),
-      _ => throw const FormatException('Failed to load album.'),
-    };
-  }
-}
-
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> create() => _MyAppState();
+  _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  late Future<Album> futureAlbum;
+  late Future<Map<String, dynamic>> futureWeather;
 
   @override
   void initState() {
     super.initState();
-    futureAlbum = fetchAlbum();
+    futureWeather = fetchWeather();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Fetch Data Example',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
+      title: 'Погода в Караганде',
       home: Scaffold(
-        appBar: AppBar(title: const Text('Fetch Data Example')),
-        body: Center(
-          child: FutureBuilder<Album>(
-            future: futureAlbum,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text(snapshot.data!.titel);
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
-
-              return const CircularProgressIndicator();
-            },
-          ),
-        ),
-      ),
-    );
-  }
-
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Переход между страницами',
-      home: MainPage(),
-    );
-  }
-}
-
-class MainPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Главная страница'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        appBar: AppBar(title: const Text('Погода в Караганде')),
+        body: Column(
           children: [
-            Text('Караганда'),
-            Text('Сегодня'),
-            Image.asset(
-             'lib/pictures/sun.png',
-              width: 150,
-              height: 150,
+            // Тут отображаем погоду
+            FutureBuilder<Map<String, dynamic>>(
+              future: futureWeather,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Ошибка: ${snapshot.error}');
+                } else if (snapshot.hasData) {
+                  var weatherData = snapshot.data!;
+                  if (weatherData.containsKey('current_weather')) {
+                    var currentWeather = weatherData['current_weather'];
+                    return Column(
+                      children: [
+                        Text('Температура: ${currentWeather['temperature']}°C'),
+                        Text('Скорость ветра: ${currentWeather['windspeed']} км/ч'),
+                        Text('Код погоды: ${currentWeather['weathercode']}'),
+                      ],
+                    );
+                  } else {
+                    return Text('Данные о текущей погоде недоступны');
+                  }
+                } else {
+                  return Text('Нет данных');
+                }
+              },
             ),
-            Text('''Температура: -15\nВлажность: 71%\nВетер: 8 км/ч'''),
-            Text('Рекомендации по погоде'),
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -119,7 +76,7 @@ class MainPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => WeatherPage()),
                 );
               },
-              child: Text('Погода на неделю'),
+              child: const Text('Погода на неделю'),
             ),
           ],
         ),
