@@ -9,19 +9,20 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  shared_preferences: ^2.0.0
+  cupertino_icons: ^1.0.8
   http: ^1.6.0
+  google_fonts: ^7.1.0
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  shared_preferences: ^2.0.20
+  crypto: ^3.0.2
 
 flutter:
   uses-material-design: true
   assets:
-    - lib/pictures/sun.png
-    - lib/pictures/snow.png
-    - lib/pictures/cloudy.png
-    - lib/pictures/cloud.png
+    - assets/images/
 
